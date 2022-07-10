@@ -9,8 +9,8 @@ class Customer < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_one_attached :profile_image
 
-  validates :name, langth: { minimum: 2, maximum: 20 }, uniqueness: true
-  validates :introduction, langth: {maximum: 50 }
+  #validates :name, langth: { minimum: 2, maximum: 20 }, uniqueness: true
+  #validates :introduction, langth: {maximum: 50 }
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : "no_image.jpg"

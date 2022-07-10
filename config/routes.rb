@@ -9,14 +9,25 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
-  root :to =>"homes#top"
-  get "home/about" => "homes#about"
+  scope module: :public do
+    root :to =>"homes#top"
+    get "home/about" => "homes#about"
 
-  resources :comics, only: [:index, :show, :edit, :create, :destroy, :update] do
-    resources :comments, only: [:create, :destroy]
-    resource :favorites, only: [:create, :destroy]
+    resources :comics, only: [:index, :show, :edit, :create, :destroy, :update] do
+      resources :comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
+    end
+    resources :customers, only: [:index, :show, :edit, :update]
+    get '/search', to: 'searches#search'
   end
-  resources :customers, only: [:index, :show, :edit, :update]
-  get '/search', to: 'searches#search'
+
+  namespace :admin do
+    resources :customers, only: [:index, :edit, :update, :show, :destroy]
+    resources :comics, only: [:index, :show, :edit, :create, :destroy, :update] do
+      resources :comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
+    end
+    get '' => 'homes#top', as: 'admin'
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
