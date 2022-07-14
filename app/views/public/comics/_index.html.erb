@@ -1,0 +1,23 @@
+<table class='table table-hover table-inverse' >
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th clospan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% comics.sach do |comic| %>
+      <tr>
+        <td><%= link_to(comic.customer) do %>
+          <%= image_tag comic.customer.get_profile_image, size:'50x50' %>
+          <% end %>
+        </td>
+        <td><%= link_to comic.title, comic, class: "comic_#{comic.id}" %></td>
+        <td><%= comic.synopsis %></td>
+        <td>コメント数: <%= comic.comic_comments.count %></td>
+        <td><%= render "favorites/btn", comic: comic %></td>
+      </tr>
+  </tbody>
+</table>
