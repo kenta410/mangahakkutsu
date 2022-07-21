@@ -1,0 +1,38 @@
+<% provide(:title, "漫画情報編集") %>
+<div class="container">
+  <h2 class="text-center m-5"><%= @comic_name %>情報編集</h2>
+  <div class="row d-flex justify-content-center">
+
+  <%= form_with model: @comic, url: admin_comic_path, local: true do |f| %>
+    <div class="col-xs-10 offset-1">
+      <div class="form-group col-xs-9">
+        <%= f.label :"漫画ID", class: "col-sm-4" %>
+        <%= f.label :"#{@comic.id}" %>
+      </div>
+      <div class="form-group col-xs-9">
+        <%= f.label :"タイトル", class: "col-sm-4 control-label" %>
+        <%= f.text_field :title, class: "col-sm-3 form-control-static" %>
+      </div>
+
+      <div class="form-group col-xs-9">
+        <%= f.label :"あらすじ", class: "col-sm-4 control-label" %>
+        <%= f.text_area :synopsis, class: "col-sm-7" %>
+      </div>
+
+      <div class="form-group col-xs-9">
+        <%= f.label :"漫画ステータス", class: "col-sm-4 control-label" %>
+        　<%= f.radio_button :is_deleted, false %>
+        　<%= f.label :is_deleted, "有効"%>
+        　<%= f.radio_button :is_deleted, true %>
+        　<%= f.label :is_deleted, "退会" %>
+      </div>
+    </div>
+      <div class="form-group col-xs-9 d-flex justify-content-around">
+        <%= f.submit '変更を保存する' ,class: "btn btn-success" %>
+        <%= link_to '漫画詳細画面へ戻る',admin_comic_path, class:"btn btn-outline-secondary"%>
+      </div>
+
+  <% end %>
+
+  </div>
+</div>

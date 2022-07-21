@@ -6,7 +6,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def index
-    @customers = Customer.all
+    @customers = Customer.all.page(params[:page]).per(10)
     @comic = Comic.new
   end
 
@@ -23,10 +23,14 @@ class Public::CustomersController < ApplicationController
 
   private
 
+  def customer_params
+    params.require(:customer).permit(:name, :introduction, :email, :is_deleted)
+  end
+
   def ensure_current_customer
     @customer = Customer.find(params[:id])
     unless @customer == current_customer
       redirect_to customer_path(current_customer)
     end
-
+  end
 end

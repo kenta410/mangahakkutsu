@@ -1,0 +1,35 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>漫画ID</th>
+      <th>タイトル</th>
+      <th>あらすじ</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comics.each do |comic| %>
+      <tr>
+        <td class="info col-xs-1">
+          <%= comic.id %>
+        </td>
+        <td class="text-left">
+          <%= link_to admin_comic_path(comic) do %>
+          <%= comic_title %>
+          <% end %>
+        </td>
+        <td class="text-left">
+          <%= comic_synopsis %>
+        </td>
+        <td class="col-xs-2">
+          <% if comic.is_delete == true%>
+            <p class="text-secondary">退会済</p>
+          <% else %>
+            <p class="text-success">有効</p>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
