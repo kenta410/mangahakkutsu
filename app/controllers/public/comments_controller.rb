@@ -1,6 +1,6 @@
 class Public::CommentsController <
-  before_action :authenticate_user!
-  before_action :ensure_guest_user, only: [:edit]
+  before_action :authenticate_customer!
+  before_action :ensure_guest_customer, only: [:edit]
   def create
     comic = comic.find(params[:comic.id])
     comment = current_customer.comic_comments.new(comic_comment_params)
@@ -19,10 +19,10 @@ class Public::CommentsController <
     params.require(:comic_comment).permit(:comment)
   end
 
-  def ensure_guest_user
-    @user = User.find(params[:id])
-    if @user.name == "guestuser"
-      redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+  def ensure_guest_customer
+    @customer = Customer.find(params[:id])
+    if @customer.name == "guestuser"
+      redirect_to customer_path(current_customer) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end
 end

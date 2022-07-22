@@ -1,10 +1,10 @@
 <%= form_with model:comic, local:true do |f| %>
   <div class="form-group">
-    <%= f.lavel :title %>
+    <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control comic_title' %>
   </div>
   <div class="form-group">
-    <%= f.lavel :opinion %>
+    <%= f.label :opinion %>
     <%= f.text_area :synopsis, class: 'form-control comic_synopsis' %>
   </div>
   <div class="form-group">

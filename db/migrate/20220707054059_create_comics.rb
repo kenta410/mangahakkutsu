@@ -4,7 +4,7 @@ class CreateComics < ActiveRecord::Migration[6.1]
 
       t.string :title
       t.text :synopsis
-      t.integer :user_id
+      t.integer :customer_id
       t.string :image_id
 
       t.timestamps
