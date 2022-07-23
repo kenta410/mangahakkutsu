@@ -2,7 +2,7 @@
   <div class='row'>
     <div class='col-md-3'>
       <h2>Customer info</h2>
-      <%= render 'customers/info', customer: @comic.customer %>
+      <%= render 'public/customers/info', customer: @comic.customer %>
       <h2 class="mt-3">New comic</h2>
       <%= render 'form', comic: Comic.new %>
     </div>
@@ -16,9 +16,9 @@
             <% end %>
           </td>
           <td><%= link_to @comic.title, @comic %></td>
-          <td><%= @comic.body %></td>
-          <td>コメント数: <%= @comic.comic_comments.count %></td>
-          <td><%= render "favorites/btn", comic: @comic %></td>
+          <td><%= @comic.synopsis %></td>
+          <td>コメント数: <%= @comic.comments.count %></td>
+          <td><%= render "public/favorites/btn", comic: @comic %></td>
           <% if @comic.customer == current_customer %>
             <td><%= link_to 'Edit', edit_comic_path(@comic), class: "btn btn-sm btn-success edit_comic_#{@comic.id}" %></td>
             <td><%= link_to 'Destroy', @comic, method: :delete, date: { confirm: '本当に削除しますか？'}, class: "btn btn-sm btn-denger destroy_comic_#{@comic.id}" %></td>
@@ -26,8 +26,8 @@
         </tr>
       </table>
 
-      <%= render "comic_comments/index", comic: @comic %>
-      <%= render "comic_comments/form", comic: @comic, comment: @comic_comment %>
+      <%= render "public/comments/index", comic: @comic %>
+      <%= render "public/comments/form", comic: @comic, comment: Comment.new %>
 
     </div>
   </div>

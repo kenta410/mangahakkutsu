@@ -1,8 +1,8 @@
 class Public::FavoritesController < ApplicationController
   def create
-    comic = comic.find(params[:book_id])
+    comic = Comic.find(params[:comic_id])
     favorite = current_customer.favorites.new(comic_id: comic.id)
-    favorite.save
+    favorite.save!
     redirect_to request.referer
   end
 

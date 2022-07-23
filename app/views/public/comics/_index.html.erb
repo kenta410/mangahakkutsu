@@ -16,8 +16,8 @@
         </td>
         <td><%= link_to comic.title, comic, class: "comic_#{comic.id}" %></td>
         <td><%= comic.synopsis %></td>
-        <td>コメント数: <%= comic.comic_comments.count %></td>
-        <td><%= render "favorites/btn", comic: comic %></td>
+        <td>コメント数: <%= comic.comments.count %></td>
+        <td><%= render "public/favorites/btn", comic: comic %></td>
       </tr>
     <% end %>
   </tbody>

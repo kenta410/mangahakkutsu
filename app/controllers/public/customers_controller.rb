@@ -1,4 +1,6 @@
 class Public::CustomersController < ApplicationController
+  before_action :ensure_current_customer, only: [:edit, :update]
+
   def show
     @customer = Customer.find(params[:id])
     @comics = @customer.comics
@@ -11,12 +13,15 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
+     @customer = Customer.find(params[:id])
   end
 
   def update
+    @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       redirect_to customer_path(@customer), notice: "You have updated customer successfully."
     else
+      @customer = Customer.all
       render "edit"
     end
   end
@@ -24,7 +29,7 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:name, :introduction, :email, :is_deleted)
+    params.require(:customer).permit(:name, :profile_image, :introduction, :email, :is_deleted)
   end
 
   def ensure_current_customer

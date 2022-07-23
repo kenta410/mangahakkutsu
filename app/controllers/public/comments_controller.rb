@@ -1,11 +1,11 @@
-class Public::CommentsController <
+class Public::CommentsController < ApplicationController
   before_action :authenticate_customer!
   before_action :ensure_guest_customer, only: [:edit]
   def create
-    comic = comic.find(params[:comic.id])
-    comment = current_customer.comic_comments.new(comic_comment_params)
+    comic = Comic.find(params[:comic_id])
+    comment = current_customer.comments.new(comment_params)
     comment.comic_id = comic.id
-    comment.save
+    comment.save!
     redirect_to request.referer
   end
 
@@ -15,8 +15,8 @@ class Public::CommentsController <
   end
 
   private
-  def comic_comment_params
-    params.require(:comic_comment).permit(:comment)
+  def comment_params
+    params.require(:comment).permit(:comment)
   end
 
   def ensure_guest_customer

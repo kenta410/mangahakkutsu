@@ -1,7 +1,6 @@
 class Comment < ApplicationRecord
 
   belongs_to :customer
-  belongs_to :comic_id
 
   validates :comment, presence: true
   validates :rate, numericality: {
