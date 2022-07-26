@@ -1,14 +1,10 @@
 <h1>管理者メニュー</h1>
 
-<ul class="navbar-nav ml-auto">
-  <li>
-    <%=  link_to admin_customers_path,class: 'nav-link text-light' do %>
-      <i class="fas fa-customers"></i> customers
-    <% end %>
-  </li>
-  <li>
-    <%=  link_to admin_comics_path ,class: 'nav-link text-light' do %>
-      <i class="fas fa-comic-open"></i> comics
-    <% end %>
-  </li>
-</ul>
+<div class="btn-wrapper col-4 mx-auto">
+  <div class="row">
+    <%=  link_to 'customers', admin_customers_path,class: 'btn btn-info btn-sm btn-block mb-3 customers' %>
+  </div>
+  <div class="row">
+    <%=  link_to 'comics', admin_comics_path,class: 'btn btn-info btn-sm btn-block mb-3 comics' %>
+  </div>
+</div>
