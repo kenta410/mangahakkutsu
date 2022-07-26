@@ -1,4 +1,6 @@
 class Admin::ComicsController < ApplicationController
+  before_action :authenticate_admin!
+  
   def show
     @comic = Comic.find(params[:id])
     @comments = Comment.all.page(params[:page]).per(10)
@@ -14,8 +16,12 @@ class Admin::ComicsController < ApplicationController
   end
 
   def update
-    if  @comic.update(comic_params)
-      redirect_to admin_comic_path(@comic)
+    @comic = Comic.find(params[:id])
+    @comic.image = params[:comic][:image]
+    @comic.title = params[:comic][:title]
+    @comic.synopsis = params[:comic][:synopsis]
+    if @comic.save
+      redirect_to admin_comics_path(@comic)
     else
       render "edit"
     end
@@ -24,7 +30,7 @@ class Admin::ComicsController < ApplicationController
   private
 
   def comic_params
-    params.require(:comic).permit(:title, :synopsis)
+    params.require(:comic).permit(:title, :synopsis, :image)
   end
 
 

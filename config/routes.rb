@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'comics/show'
-    get 'comics/index'
-    get 'comics/edit'
-  end
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  devise_for :admins, controllers: {
     sessions: "admin/sessions"
   }
 
@@ -21,6 +16,8 @@ Rails.application.routes.draw do
   scope module: :public do
     root :to =>"homes#top"
     get "home/about" => "homes#about"
+    get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
 
     resources :comics, only: [:index, :show, :edit, :create, :destroy, :update] do
       resources :comments, only: [:create, :destroy]

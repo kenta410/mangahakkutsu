@@ -2,16 +2,19 @@
   <thead>
     <tr>
       <th></th>
-      <th>Title</th>
-      <th>Opinion</th>
+      <th>タイトル</th>
+      <th>あらすじ</th>
       <th clospan="3"></th>
     </tr>
   </thead>
   <tbody>
     <% comics.each do |comic| %>
       <tr>
-        <td><%= link_to(comic.customer) do %>
-          <%= image_tag comic.customer.get_profile_image, size:'50x50' %>
+        <td>
+          <% if comic.image.attached? %>
+            <%= image_tag comic.image, size: "80x80" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "80x80" %>
           <% end %>
         </td>
         <td><%= link_to comic.title, comic, class: "comic_#{comic.id}" %></td>

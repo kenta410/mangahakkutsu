@@ -1,6 +1,6 @@
 class Public::ComicsController < ApplicationController
 
-before_action :correct_user, only: [:edit, :update]
+before_action :correct_customer,only: [:edit, :update]
 
    def new
     @comic = Comic.new
@@ -49,7 +49,7 @@ before_action :correct_user, only: [:edit, :update]
   private
 
   def comic_params
-    params.require(:comic).permit(:title, :synopsis)
+    params.require(:comic).permit(:title, :synopsis, :image)
   end
 
   def correct_user

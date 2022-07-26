@@ -1,11 +1,11 @@
 <div class='container'>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h1>Editing Comic</h1>
+      <h1>漫画情報編集</h1>
       <%= render 'public/shared/error_messages', resource: @comic %>
       <%= render 'form', comic: @comic %>
-      <%= link_to 'show', @comic, class: "comic_#{@comic.id}" %> |
-      <%= link_to 'back', comics_path, class: "back" %>
+      <%= link_to '詳細', @comic, class: "comic_#{@comic.id}" %> |
+      <%= link_to '戻る', comics_path, class: "back" %>
     </div>
   </div>
 </div>

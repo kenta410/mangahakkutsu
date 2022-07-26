@@ -5,10 +5,12 @@
 
   <%= form_with model: @comic, url: admin_comic_path, local: true do |f| %>
     <div class="col-xs-10 offset-1">
-      <div class="form-group col-xs-9">
-        <%= f.label :"漫画ID", class: "col-sm-4" %>
-        <%= f.label :"#{@comic.id}" %>
+      
+      <div class="form-group">
+        <%= f.label :表紙%>
+        <%= f.file_field :image, class: "form-control-file image", accept: 'image/*' %>
       </div>
+      
       <div class="form-group col-xs-9">
         <%= f.label :"タイトル", class: "col-sm-4 control-label" %>
         <%= f.text_field :title, class: "col-sm-3 form-control-static" %>
@@ -29,7 +31,7 @@
     </div>
       <div class="form-group col-xs-9 d-flex justify-content-around">
         <%= f.submit '変更を保存する' ,class: "btn btn-success" %>
-        <%= link_to '漫画詳細画面へ戻る',admin_comic_path, class:"btn btn-outline-secondary"%>
+        <%= link_to '漫画詳細画面へ戻る',admin_comics_path, class:"btn btn-outline-secondary"%>
       </div>
 
   <% end %>

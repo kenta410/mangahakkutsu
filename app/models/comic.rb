@@ -2,6 +2,7 @@ class Comic < ApplicationRecord
   belongs_to :customer
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_one_attached :image
 
   validates :title, presence:true
   validates :synopsis, presence:true, length:{maximum: 200 }
@@ -19,6 +20,14 @@ class Comic < ApplicationRecord
       Comic.where('title LIKE ?', '%' + content)
     else
       Comic.where('title LIKE ?', '%' + content + '%')
+    end
+  end
+  
+  def get_image
+    if image.attached?
+      image
+    else
+      'no_image.jpg'
     end
   end
 end

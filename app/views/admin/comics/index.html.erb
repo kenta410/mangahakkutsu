@@ -1,8 +1,9 @@
 <% provide(:title, "漫画情報一覧") %>
 <div class="container">
- <h2 class="my-5">漫画一覧</h2>
+  <h2 class="my-5">漫画一覧</h2>
   <div class="row d-flex justify-content-center">
-  <%= render 'index' %>
- </div>
- 　<div class="d-flex justify-content-center"><%= paginate(@comics)%></div>
+    <%= render 'index' %>
+  </div>
+ <div class="d-flex justify-content-center"><%= paginate(@comics)%></div>
+ <%= link_to '管理者メニュー画面へ戻る',admin_admin_path, class:"btn btn-outline-secondary"%>
 </div>

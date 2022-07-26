@@ -1,27 +1,38 @@
 <div class='container'>
   <div class='row'>
     <div class='col-md-3'>
-      <h2>Customer info</h2>
+      <h2>会員情報</h2>
       <%= render 'public/customers/info', customer: @comic.customer %>
-      <h2 class="mt-3">New comic</h2>
+      <h2 class="mt-3">新規投稿</h2>
       <%= render 'form', comic: Comic.new %>
     </div>
     <div class='col-md-8 offset-md-1'>
-      <h2>Comic detail</h2>
+      <h2>漫画情報</h2>
       <table class='table'>
         <tr>
-          <td><%= link_to (@comic.customer) do %>
-            <%= image_tag @comic.customer.get_profile_image, size:"150x150" %><br>
-            <%= @comic.customer.name %>
+          <th>タイトル</th>
+          <th><%= link_to @comic.title, @comic %></th>
+        </tr>
+        <tr>
+          <td>
+            <% if @comic.image.attached? %>
+              <%= image_tag @comic.get_image, size: "100x100" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "100x100" %>
             <% end %>
           </td>
-          <td><%= link_to @comic.title, @comic %></td>
+        </tr>
+        <tr>
+          <th>あらすじ</th>
           <td><%= @comic.synopsis %></td>
+        </tr>
+        <th clospan="3"></th>
+        <tr>
           <td>コメント数: <%= @comic.comments.count %></td>
           <td><%= render "public/favorites/btn", comic: @comic %></td>
           <% if @comic.customer == current_customer %>
-            <td><%= link_to 'Edit', edit_comic_path(@comic), class: "btn btn-sm btn-success edit_comic_#{@comic.id}" %></td>
-            <td><%= link_to 'Destroy', @comic, method: :delete, date: { confirm: '本当に削除しますか？'}, class: "btn btn-sm btn-denger destroy_comic_#{@comic.id}" %></td>
+            <td><%= link_to '編集', edit_comic_path(@comic), class: "btn btn-sm btn-success edit_comic_#{@comic.id}" %></td>
+            <td><%= link_to '削除', @comic, method: :delete, date: { confirm: '本当に削除しますか？'}, class: "btn btn-sm btn-denger destroy_comic_#{@comic.id}" %></td>
           <% end %>
         </tr>
       </table>

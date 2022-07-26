@@ -1,10 +1,16 @@
 <%= form_with model:comic, local:true do |f| %>
   <div class="form-group">
-    <%= f.label :title %>
+    <%= f.label :タイトル%>
     <%= f.text_field :title, class: 'form-control comic_title' %>
   </div>
+
   <div class="form-group">
-    <%= f.label :opinion %>
+    <%= f.label :表紙 %>
+    <%= f.file_field :image, class: "form-control-file image", accept: 'image/*' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :あらすじ %>
     <%= f.text_area :synopsis, class: 'form-control comic_synopsis' %>
   </div>
   <div class="form-group">

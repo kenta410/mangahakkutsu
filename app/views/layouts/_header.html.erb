@@ -1,57 +1,57 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="/"><span>漫画発掘</span></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-        <% if customer_signed_in? %>
-          <li>
-            <%= link_to customer_path(current_customer),class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> Home
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/"><span>漫画発掘</span></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+            <% if customer_signed_in? %>
+              <li>
+                <%= link_to customer_path(current_customer),class: 'nav-link text-light' do %>
+                  <i class="fas fa-home"></i> Home
+                <% end %>
+              </li>
+              <li>
+                <%=  link_to customers_path,class: 'nav-link text-light' do %>
+                  <i class="fas fa-user"></i> 会員一覧
+                <% end %>
+              </li>
+              <li>
+                <%=  link_to comics_path ,class: 'nav-link text-light' do %>
+                  <i class="fa fa-book"></i></i> 漫画一覧
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
+                  <i class="fas fa-sign-out-alt"></i> ログアウト
+                <% end %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to root_path,class: 'nav-link text-light' do %>
+                  <i class="fas fa-home"></i> Home
+                <% end %>
+              </li>
+              <li>
+                <%= link_to home_about_path,class: 'nav-link text-light' do %>
+                  <i class="fas fa-link"></i> About
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_customer_registration_path,class: 'nav-link text-light' do %>
+                  <i class="fas fa-user-plus"></i> 会員登録
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_customer_session_path ,class: 'nav-link text-light' do %>
+                  <i class="fas fa-sign-in-alt"></i> ログイン
+                <% end %>
+              </li>
             <% end %>
-          </li>
-          <li>
-            <%=  link_to customers_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-customers"></i> customers
-            <% end %>
-          </li>
-          <li>
-            <%=  link_to comics_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-comic-open"></i> comics
-            <% end %>
-          </li>
-          <li>
-            <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-out-alt"></i> logout
-            <% end %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to root_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> Home
-            <% end %>
-          </li>
-          <li>
-            <%= link_to home_about_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-link"></i> About
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_customer_registration_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-customer-plus"></i> sign up
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_customer_session_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-in-alt"></i> login
-            <% end %>
-          </li>
-        <% end %>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</header>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>

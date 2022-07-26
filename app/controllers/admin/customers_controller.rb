@@ -1,8 +1,10 @@
 class Admin::CustomersController < ApplicationController
+  before_action :authenticate_admin!
+  
   def show
     @customer = Customer.find(params[:id])
-    @comics = Customer.comics
-    @coments = Customer.coments
+    @comics = @customer.comics
+    @coments = @customer.comments
   end
 
   def index
@@ -14,12 +16,17 @@ class Admin::CustomersController < ApplicationController
   end
 
   def update
-    if @customer.update(customer_params)
-      redirect_to admin_customer_path(@customer)
+    @customer = Customer.find(params[:id])
+    @customer.name = params[:customer][:name]
+    @customer.introduction = params[:customer][:introduction]
+    @customer.email = params[:customer][:email]
+    if @customer.save
+      redirect_to admin_customers_path(@customer)
     else
       render "edit"
     end
   end
+
 
   private
 

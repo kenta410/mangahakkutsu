@@ -1,7 +1,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th>漫画ID</th>
+      <th></th>
       <th>タイトル</th>
       <th>あらすじ</th>
       <th>ステータス</th>
@@ -11,16 +11,21 @@
   <tbody>
     <% @comics.each do |comic| %>
       <tr>
-        <td class="info col-xs-1">
-          <%= comic.id %>
+       <td>
+          <% if comic.image.attached? %>
+            <%= image_tag comic.image, size: "80x80" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "80x80" %>
+          <% end %>
+        </td>
         </td>
         <td class="text-left">
           <%= link_to admin_comic_path(comic) do %>
-          <%= comic_title %>
+          <%= comic.title %>
           <% end %>
         </td>
         <td class="text-left">
-          <%= comic_synopsis %>
+          <%= comic.synopsis %>
         </td>
         <td class="col-xs-2">
           <% if comic.is_delete == true%>
