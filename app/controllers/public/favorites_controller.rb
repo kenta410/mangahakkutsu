@@ -7,8 +7,8 @@ class Public::FavoritesController < ApplicationController
   end
 
   def destroy
-    comic = comic.find(params[:comic_id])
-    favorite = current_customer.favorite.find_by(comic_id: comic.id)
+    comic = Comic.find(params[:comic_id])
+    favorite = current_customer.favorites.find_by(comic_id: comic.id)
     favorite.destroy
     redirect_to request.referer
   end
