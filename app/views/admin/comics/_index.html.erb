@@ -20,7 +20,7 @@
         </td>
         </td>
         <td class="text-left">
-          <%= link_to admin_comic_path(comic) do %>
+          <%= link_to admin_comic_path(comic), 'data-turbolinks': false do %>
           <%= comic.title %>
           <% end %>
         </td>
