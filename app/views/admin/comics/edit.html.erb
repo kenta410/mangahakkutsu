@@ -3,14 +3,14 @@
   <h2 class="text-center m-5"><%= @comic_name %>情報編集</h2>
   <div class="row d-flex justify-content-center">
 
-  <%= form_with model: @comic, url: admin_comic_path, local: true do |f| %>
+  <%= form_with model: @comic,  local: true do |f| %>
     <div class="col-xs-10 offset-1">
-      
+
       <div class="form-group">
-        <%= f.label :表紙%>
+        <%= f.label :表紙 %>
         <%= f.file_field :image, class: "form-control-file image", accept: 'image/*' %>
       </div>
-      
+
       <div class="form-group col-xs-9">
         <%= f.label :"タイトル", class: "col-sm-4 control-label" %>
         <%= f.text_field :title, class: "col-sm-3 form-control-static" %>

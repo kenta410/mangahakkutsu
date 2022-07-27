@@ -17,11 +17,8 @@ class Admin::ComicsController < ApplicationController
 
   def update
     @comic = Comic.find(params[:id])
-    @comic.image = params[:comic][:image]
-    @comic.title = params[:comic][:title]
-    @comic.synopsis = params[:comic][:synopsis]
-    if @comic.save
-      redirect_to admin_comics_path(@comic)
+    if @comic.update(comic_params)
+      redirect_to admin_comics_path, notice: "You have updated comic successfully."
     else
       render "edit"
     end

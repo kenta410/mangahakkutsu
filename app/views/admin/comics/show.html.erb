@@ -4,18 +4,18 @@
   <div class="row d-flex justify-content-center">
 
   <%= form_with model: @comic, url: admin_comic_path, local: true do |f| %>
-    <div class="col-xs-10 offset-1">
-      
+    <div class="col-xs-10 offset-1"
+
       <div class="form-group">
         <%= f.label :表紙 %>
         <%= f.file_field :image, class: "form-control-file image", accept: 'image/*' %>
       </div>
-      
+
       <div class="form-group col-xs-9">
         <%= f.label :"タイトル", class: "col-sm-4 control-label" %>
         <%= f.text_field :title, class: "col-sm-3 form-control-static" %>
       </div>
-      
+
            <div class="form-group col-xs-9">
         <%= f.label :"あらすじ", class: "col-sm-4 control-label" %>
         <%= f.text_area :synopsis, class: "col-sm-7" %>

@@ -7,7 +7,7 @@ before_action :configure_permitted_parameters, if: :devise_controller?
       admin_admin_path
 
     when Customer
-      comics_path
+      customers_path
     end
   end
 

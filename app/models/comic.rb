@@ -22,7 +22,7 @@ class Comic < ApplicationRecord
       Comic.where('title LIKE ?', '%' + content + '%')
     end
   end
-  
+
   def get_image
     if image.attached?
       image

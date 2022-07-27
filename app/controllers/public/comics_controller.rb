@@ -1,6 +1,6 @@
 class Public::ComicsController < ApplicationController
 
-before_action :correct_customer,only: [:edit, :update]
+before_action :current_customer,only: [:edit, :update]
 
    def new
     @comic = Comic.new
@@ -30,9 +30,12 @@ before_action :correct_customer,only: [:edit, :update]
   end
 
   def edit
+    @comic = Comic.find(params[:id])
+    @comments = Comment.all.page(params[:page]).per(10)
   end
 
   def update
+    @comic = Comic.find(params[:id])
     if @comic.update(comic_params)
       redirect_to comic_path(@comic), notice: "You have updated comic successfully."
     else
@@ -52,7 +55,7 @@ before_action :correct_customer,only: [:edit, :update]
     params.require(:comic).permit(:title, :synopsis, :image)
   end
 
-  def correct_user
+  def corect_customer
     @comic = Comic.find(params[:id])
     unless @comic.customer == current_customer
       redirect_to comics_path
