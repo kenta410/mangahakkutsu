@@ -20,7 +20,7 @@ class Admin::ComicsController < ApplicationController
     if @comic.update(comic_params)
       redirect_to admin_comics_path, notice: "You have updated comic successfully."
     else
-      render "edit"
+      render "show"
     end
   end
 

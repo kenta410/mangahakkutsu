@@ -17,11 +17,8 @@ class Admin::CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
-    @customer.name = params[:customer][:name]
-    @customer.introduction = params[:customer][:introduction]
-    @customer.email = params[:customer][:email]
-    if @customer.save
-      redirect_to admin_customers_path(@customer)
+    if @customer.update(customer_params)
+      redirect_to admin_customers_path(@customer), notice: "You have updated customer successfully."
     else
       render "edit"
     end
