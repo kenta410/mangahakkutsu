@@ -1,6 +1,6 @@
 class Admin::ComicsController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def show
     @comic = Comic.find(params[:id])
     @comments = Comment.all.page(params[:page]).per(10)
@@ -27,7 +27,7 @@ class Admin::ComicsController < ApplicationController
   private
 
   def comic_params
-    params.require(:comic).permit(:title, :synopsis, :image)
+    params.require(:comic).permit(:title, :synopsis, :image, :is_delete)
   end
 
 

@@ -2,13 +2,10 @@ class Public::SearchesController < ApplicationController
   before_action :authenticate_customer!
 
   def search
-    @model = params[:model]
-    @content = params[:content]
-    @method = params[:method]
-    if @model == 'customer'
-      @records = Customer.search_for(@content, @method)
+    if (params[:kyeword])[0] == '#'
+      @comics = Tag.search(params[:kyeword]).(order'created_at DESC')
     else
-      @records = Comic.search_for(@content, @method)
+      @comics = Comic.search(params[:kyeword]).order('created_at DESC')
     end
   end
 end

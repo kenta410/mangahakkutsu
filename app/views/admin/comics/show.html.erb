@@ -4,7 +4,7 @@
   <div class="row d-flex justify-content-center">
 
   <%= form_with model: @comic, url: admin_comic_path(@comic), method: :patch, local: true do |f| %>
-    <div class="col-xs-10 offset-1"
+    <div class="col-xs-10 offset-1">
 
       <div class="form-group">
         <%= f.label :表紙 %>
@@ -16,25 +16,24 @@
         <%= f.text_field :title, class: "col-sm-3 form-control-static" %>
       </div>
 
-           <div class="form-group col-xs-9">
+      <div class="form-group col-xs-9">
         <%= f.label :"あらすじ", class: "col-sm-4 control-label" %>
         <%= f.text_area :synopsis, class: "col-sm-7" %>
       </div>
-
-      <div class="form-group col-xs-9">
-        <%= f.label :"漫画ステータス", class: "col-sm-4 control-label" %>
-        　<%= f.radio_button :is_deleted, false %>
-        　<%= f.label :is_deleted, "有効"%>
-        　<%= f.radio_button :is_deleted, true %>
-        　<%= f.label :is_deleted, "削除" %>
-      </div>
     </div>
-      <div class="form-group col-xs-9 d-flex justify-content-around">
-        <%= f.submit '変更を保存する' ,class: "btn btn-success" %>
-        <%= link_to '漫画一覧画面へ戻る',admin_comics_path, class:"btn btn-outline-secondary"%>
-      </div>
 
+    <tr>
+      <td>コメント数: <%= @comic.comments.count %></td>
+    </tr>
+      
+    <%= render "public/comments/index", comic: @comic %>
+    
+    <div class="form-group col-xs-9 d-flex justify-content-around">
+      <%= f.submit '変更を保存する' ,class: "btn btn-success" %>
+      <%= link_to '漫画一覧画面へ戻る',admin_comics_path, class:"btn btn-outline-secondary"%>
+    </div>
+
+  
   <% end %>
-
   </div>
 </div>

@@ -4,7 +4,6 @@
       <th></th>
       <th>タイトル</th>
       <th>あらすじ</th>
-      <th>ステータス</th>
     </tr>
   </thead>
 
@@ -26,13 +25,6 @@
         </td>
         <td class="text-left">
           <%= comic.synopsis %>
-        </td>
-        <td class="col-xs-2">
-          <% if comic.is_delete == true%>
-            <p class="text-secondary">削除済</p>
-          <% else %>
-            <p class="text-success">有効</p>
-          <% end %>
         </td>
       </tr>
     <% end %>

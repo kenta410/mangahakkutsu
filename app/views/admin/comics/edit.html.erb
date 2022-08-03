@@ -1,10 +1,10 @@
 <% provide(:title, "漫画情報編集") %>
 <div class="container">
-  <h2 class="text-center m-5"><%= @comic_name %>情報編集</h2>
+  <h2 class="text-center m-5"><%= @comic.title %>情報編集</h2>
   <div class="row d-flex justify-content-center">
 
-  <%= form_with model: @comic, local: true do |f| %>
-    <div class="col-xs-10 offset-1">
+  <%= form_with model: @comic, url: edit_admin_comic_path(@comic), method: :patch, local: true do |f| %>
+    <div class="col-xs-10 offset-1"
 
       <div class="form-group">
         <%= f.label :表紙 %>
@@ -21,20 +21,21 @@
         <%= f.text_area :synopsis, class: "col-sm-7" %>
       </div>
 
-      <div class="form-group col-xs-9">
-        <%= f.label :"漫画ステータス", class: "col-sm-4 control-label" %>
-        　<%= f.radio_button :is_deleted, false %>
-        　<%= f.label :is_deleted, "有効"%>
-        　<%= f.radio_button :is_deleted, true %>
-        　<%= f.label :is_deleted, "退会" %>
-      </div>
     </div>
       <div class="form-group col-xs-9 d-flex justify-content-around">
         <%= f.submit '変更を保存する' ,class: "btn btn-success" %>
-        <%= link_to '漫画詳細画面へ戻る',admin_comics_path, class:"btn btn-outline-secondary"%>
+        <%= link_to '削除', @comic, method: :delete, date: { confirm: '本当に削除しますか？'}, class: "btn btn-sm btn-denger destroy_comic_#{@comic.id}" %>
+        <%= link_to '漫画一覧画面へ戻る',admin_comics_path, class:"btn btn-outline-secondary"%>
       </div>
+      
+    <th clospan="3"></th>
+      <tr>
+        <td>コメント数: <%= @comic.comments.count %></td>
+        </tr>
 
   <% end %>
+     
+      <%= render "public/comments/index", comic: @comic %>
 
   </div>
 </div>
