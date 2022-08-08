@@ -1,6 +1,7 @@
 class Public::CommentsController < ApplicationController
   before_action :authenticate_customer!
   before_action :ensure_guest_customer, only: [:edit]
+
   def create
     comic = Comic.find(params[:comic_id])
     comment = current_customer.comments.new(comment_params)

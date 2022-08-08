@@ -29,14 +29,14 @@ before_action :current_customer,only: [:edit, :update]
 
   def create
     @customer = current_customer
-    @comic = Comic.new
-    tag_list = params[:comic][:tag_name].split(nil)
+    @comic = Comic.new(comic_params)
+#    tag_list = params[:comic][:tag_name].split(nil)
     @comic.customer_id = current_customer.id
     if @comic.save
-      @comic.save_comics(tag_list)
+#      @comic.save_comics(tag_list)
       redirect_to comic_path(@comic), notice: "You have created comic successfully."
     else
-      @comic = Comic.all
+      @comics = Comic.all
       render 'index'
     end
   end

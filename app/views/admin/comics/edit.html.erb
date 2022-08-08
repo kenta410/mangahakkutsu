@@ -27,14 +27,14 @@
         <%= link_to '削除', @comic, method: :delete, date: { confirm: '本当に削除しますか？'}, class: "btn btn-sm btn-denger destroy_comic_#{@comic.id}" %>
         <%= link_to '漫画一覧画面へ戻る',admin_comics_path, class:"btn btn-outline-secondary"%>
       </div>
-      
+
     <th clospan="3"></th>
       <tr>
         <td>コメント数: <%= @comic.comments.count %></td>
         </tr>
 
   <% end %>
-     
+
       <%= render "public/comments/index", comic: @comic %>
 
   </div>
