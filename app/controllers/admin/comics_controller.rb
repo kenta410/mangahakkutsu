@@ -29,6 +29,6 @@ class Admin::ComicsController < ApplicationController
   def comic_params
     params.require(:comic).permit(:title, :synopsis, :image, :is_delete)
   end
-
-
+  
+  
 end
