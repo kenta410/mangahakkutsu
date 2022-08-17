@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_30_041436) do
+ActiveRecord::Schema.define(version: 2022_08_17_110809) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -97,46 +97,14 @@ ActiveRecord::Schema.define(version: 2022_07_30_041436) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "post_tags", force: :cascade do |t|
-    t.integer "post_id", null: false
-    t.integer "tag_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_post_tags_on_post_id"
-    t.index ["tag_id"], name: "index_post_tags_on_tag_id"
-  end
-
-  create_table "tagmaps", force: :cascade do |t|
-    t.integer "genre_id", null: false
-    t.integer "tag_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["genre_id"], name: "index_tagmaps_on_genre_id"
-    t.index ["tag_id"], name: "index_tagmaps_on_tag_id"
-  end
-
   create_table "tags", force: :cascade do |t|
     t.string "tag_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "comic_id"
     t.index ["tag_name"], name: "index_tags_on_tag_name", unique: true
-  end
-
-  create_table "tweet_tag_relations", force: :cascade do |t|
-    t.integer "tweet_id", null: false
-    t.integer "tag_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["tag_id"], name: "index_tweet_tag_relations_on_tag_id"
-    t.index ["tweet_id"], name: "index_tweet_tag_relations_on_tweet_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "post_tags", "posts"
-  add_foreign_key "post_tags", "tags"
-  add_foreign_key "tagmaps", "genres"
-  add_foreign_key "tagmaps", "tags"
-  add_foreign_key "tweet_tag_relations", "tags"
-  add_foreign_key "tweet_tag_relations", "tweets"
 end

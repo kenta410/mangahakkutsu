@@ -4,4 +4,7 @@
 <% elsif @model == 'comic' %>
 	<h3>Comics search for "<%= @content %>"</h3>
   <%= render 'public/comics/index', comics: @records %>
+  <% elsif @model == 'tag' %>
+	<h3>Comics search for "<%= @content %>"</h3>
+  <%= render 'public/comics/index', comics: @records %>
 <% end %>

@@ -2,9 +2,9 @@
 <html>
   <head>
     <title>Mangahakkutsu</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -14,8 +14,9 @@
     <%= render 'layouts/header' %>
       <main>
         <p id="notice"><%= notice %></p>
-        <div class="d-flex justify-content-center mb-2">
-          <%= render 'public/searches/form' %>
+        <div class="d-flex justify-content-state mb-2">
+          <div class="mr-3"><%= render 'public/searches/form' %></div>
+          <div class="mr-3"><%= render "public/searches/tag_form" %></div>
         </div>
     <%= yield %>
     <footer>
