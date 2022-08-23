@@ -40,7 +40,7 @@ class Comic < ApplicationRecord
      self.tags << item_tag
     end
   end
-  
+
   def self.comics_search(search)
       Comic.where(['title LIKE(?) or text LIKE(?)', "%#{search}%", "%#{search}%"])
   end

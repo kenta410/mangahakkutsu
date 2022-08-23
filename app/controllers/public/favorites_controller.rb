@@ -1,4 +1,6 @@
 class Public::FavoritesController < ApplicationController
+  before_action :authenticate_customer!
+
   def create
     comic = Comic.find(params[:comic_id])
     favorite = current_customer.favorites.new(comic_id: comic.id)

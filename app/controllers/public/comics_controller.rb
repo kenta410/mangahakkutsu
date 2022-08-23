@@ -1,5 +1,5 @@
 class Public::ComicsController < ApplicationController
-  
+before_action :authenticate_customer!
 before_action :current_customer,only: [:edit, :update, :destroy]
 
    def new

@@ -12,5 +12,5 @@ class Public::SearchesController < ApplicationController
 		elsif @model == 'tag'
 			@records = Tag.search_comics_for(@content, @method)
 		end
-	end
+  end
 end
