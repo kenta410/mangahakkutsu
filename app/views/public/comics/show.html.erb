@@ -26,6 +26,14 @@
           <th>あらすじ</th>
           <td><%= @comic.synopsis %></td>
         </tr>
+        <tr>
+          <th>タグ</th>
+          <td>
+            <% @comic.tags.each do |tag| %>
+              <%= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %></li>
+            <% end %>
+          </td>
+        </tr>
         <th clospan="3"></th>
         <tr>
           <td>コメント数: <%= @comic.comments.count %></td>
