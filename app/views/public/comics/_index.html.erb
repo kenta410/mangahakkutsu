@@ -14,7 +14,7 @@
           <% if comic.image.attached? %>
             <%= image_tag comic.image, size: "80x80" %>
           <% else %>
-            <%= image_tag 'no_image', size: "80x80" %>
+            <%= image_tag 'no_image.jpg', size: "80x80" %>
           <% end %>
         </td>
         <td><%= link_to comic.title, comic, class: "comic_#{comic.id}" %></td>
