@@ -4,6 +4,7 @@
       <h1>漫画情報編集</h1>
       <%= render 'public/shared/error_messages', resource: @comic %>
       <%= render 'form', comic: @comic %>
+       <%= render "public/comments/index", comic: @comic %>
       <%= link_to '詳細', @comic, class: "comic_#{@comic.id}" %> |
       <%= link_to '戻る', comics_path, class: "back" %>
     </div>
